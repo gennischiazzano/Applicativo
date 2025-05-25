@@ -1,16 +1,18 @@
 package GUI;
 
-import Controller.LoginController;
 import Model.Utente;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FinestraLogin extends JFrame {
     private JTextField textField;
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton registerButton;
+    private Utente utente;
 
     public FinestraLogin() {
 
@@ -18,10 +20,10 @@ public class FinestraLogin extends JFrame {
         setSize(400, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(false); // Impedisce il ridimensionamento
         setLayout(new BorderLayout());
 
-        // Pannello centrale
+        // Pannello centrale con i campi login
         JPanel centerPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -54,33 +56,32 @@ public class FinestraLogin extends JFrame {
         add(titolo, BorderLayout.NORTH);
         add(centerPanel, BorderLayout.CENTER);
 
-        // Pannello bottoni
+        // Footer con Login e Register uno accanto all'altro
         loginButton = new JButton("Login");
         registerButton = new JButton("Register");
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10)); // spazio tra i bottoni
         bottomPanel.add(loginButton);
         bottomPanel.add(registerButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // Azione login aggiornata
-        loginButton.addActionListener(e -> {
-            String username = textField.getText();
-            String password = new String(passwordField.getPassword());
-
-            Utente utente = LoginController.verificaCredenziali(username, password);
-
-            if (utente != null) {
-                JOptionPane.showMessageDialog(FinestraLogin.this, "Login effettuato con successo!");
-                dispose();
-                new SchermataPrincipale(utente); // Passa l'utente loggato alla schermata principale
-            } else {
-                JOptionPane.showMessageDialog(FinestraLogin.this, "Credenziali errate", "Errore", JOptionPane.ERROR_MESSAGE);
-                textField.setText("");
-                passwordField.setText("");
+        // Azione login
+        loginButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String username = textField.getText();
+                String password = new String(passwordField.getPassword());
+                Utente utente = new Utente(username, password);
+                if(utente.getUsername().equals(username) && utente.getUsername().equals(password)){
+                    JOptionPane.showMessageDialog(FinestraLogin.this, "Login effettuato con successo");
+                    dispose();
+                    new SchermataPrincipale(utente);
+                } else {
+                    JOptionPane.showMessageDialog(FinestraLogin.this, "Credenziali errate", "Errore", JOptionPane.ERROR_MESSAGE);
+                    textField.setText("");
+                    passwordField.setText("");
+                }
             }
         });
-
-        registerButton.addActionListener(e -> {
+        registerButton.addActionListener(e->{
             new FinestraRegister();
             FinestraLogin.this.dispose();
         });
