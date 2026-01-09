@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /** Rappresenta un’operazione di creazione di un ToDo. */
 public class Create extends Operazione {
@@ -6,3 +6,4 @@ public class Create extends Operazione {
         super(Stato_Op);
     }
 }
+
