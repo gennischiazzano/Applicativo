@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import Model.Bacheca;
 import Model.Modificate;
@@ -334,3 +334,4 @@ public class SchermataPrincipale extends JFrame {
     }
 
 }
+
