@@ -1,6 +1,6 @@
 
 
-import GUI.FinestraLogin;
+import gui.FinestraLogin;
 
 /** Classe principale che avvia l’applicazione. */
 public class Main {
