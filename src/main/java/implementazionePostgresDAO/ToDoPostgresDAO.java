@@ -1,8 +1,8 @@
 package implementazionePostgresDAO;
 
-import DAO.ToDoDAOInterface;
-import Model.ToDo;
-import Model.Stato_ToDo;
+import dao.ToDoDAOInterface;
+import model.ToDo;
+import model.Stato_ToDo;
 import database.DatabaseManager;
 
 import java.sql.*;
@@ -162,4 +162,5 @@ public class ToDoPostgresDAO implements ToDoDAOInterface {
         }
         return lista;
     }
+
 }
