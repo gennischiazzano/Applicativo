@@ -1,6 +1,6 @@
 package gui;
 
-import Model.ToDo;
+import model.ToDo;
 import controller.Controller;
 import javax.swing.*;
 import java.awt.*;
@@ -62,3 +62,4 @@ public class FinestraMostraCondivisi extends JFrame {
     }
 
 }
+
