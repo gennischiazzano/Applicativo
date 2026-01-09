@@ -1,7 +1,7 @@
 package gui;
 
-import Model.ToDo;
-import Model.Stato_ToDo;
+import model.ToDo;
+import model.Stato_ToDo;
 import controller.Controller;
 
 import javax.swing.*;
@@ -141,4 +141,5 @@ public class FinestraCreaAttivita extends JFrame {
         setVisible(true);
     }
 }
+
 
