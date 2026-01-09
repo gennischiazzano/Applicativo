@@ -273,7 +273,7 @@ public class SchermataPrincipale extends JFrame {
                 if (eliminata) {
                     JOptionPane.showMessageDialog(this, "Bacheca eliminata con successo!");
                     Bacheca bacheca = new Bacheca();
-                    bacheca.getOperazioniSuBacheca().add(new Model.Eliminate(true));
+                    bacheca.getOperazioniSuBacheca().add(new model.Eliminate(true));
                     caricaBacheche();
                 } else {
                     JOptionPane.showMessageDialog(this, "Errore durante l'eliminazione.", "Errore", JOptionPane.ERROR_MESSAGE);
@@ -334,5 +334,6 @@ public class SchermataPrincipale extends JFrame {
     }
 
 }
+
 
 
