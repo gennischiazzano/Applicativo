@@ -91,7 +91,7 @@ public class SchermataPrincipale extends JFrame {
         rightHeader.setOpaque(false);
         rightHeader.setBackground(panelColor);
 
-        JButton profileButton = new JButton(new ImageIcon("img/profilo.jpg"));
+        JButton profileButton = new JButton(new ImageIcon("src/main/resources/profilo.jpg"));
         profileButton.setPreferredSize(new Dimension(40, 40));
         profileButton.setFocusPainted(false);
         profileButton.setBorderPainted(false);
@@ -130,7 +130,7 @@ public class SchermataPrincipale extends JFrame {
         overlayPanel.add(sidebarPanel, BorderLayout.WEST);
 
         // CENTRO
-        ImageIcon centerBackgroundImage = new ImageIcon("img/1_fseafaww1.jpg");
+        ImageIcon centerBackgroundImage = new ImageIcon("src/main/resources/1_fseafaww1.jpg");
         JLabel centerBackgroundLabel = new JLabel(centerBackgroundImage);
         centerBackgroundLabel.setLayout(new BorderLayout());
 
@@ -334,6 +334,7 @@ public class SchermataPrincipale extends JFrame {
     }
 
 }
+
 
 
 
