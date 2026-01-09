@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /** Rappresenta un’operazione di eliminazione di un ToDo. */
 public class Eliminate extends Operazione {
@@ -6,3 +6,4 @@ public class Eliminate extends Operazione {
         super(Stato_Op);
     }
 }
+
