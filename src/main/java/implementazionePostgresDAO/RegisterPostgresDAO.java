@@ -1,6 +1,6 @@
 package implementazionePostgresDAO;
 
-import DAO.RegisterDAOInterface;
+import dao.RegisterDAOInterface;
 import database.DatabaseManager;
 
 import java.sql.Connection;
@@ -39,4 +39,5 @@ public class RegisterPostgresDAO implements RegisterDAOInterface {
             return false;
         }
     }
+
 }
