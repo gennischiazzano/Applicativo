@@ -1,6 +1,6 @@
 package gui;
 
-import Model.ToDo;
+import model.ToDo;
 import controller.Controller;
 
 import javax.swing.*;
@@ -129,3 +129,4 @@ public class FinestraModificaAttivita extends JFrame {
     }
 
 }
+
