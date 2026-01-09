@@ -1,7 +1,8 @@
 package Model;
 
+/** Enum per i possibili titoli delle bacheche. */
 public enum Bacheca_Titolo {
-    Università,
     Lavoro,
+    Università,
     Tempo_Libero
 }
