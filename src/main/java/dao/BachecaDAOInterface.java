@@ -1,7 +1,7 @@
-package DAO;
+package dao;
 
-import Model.Bacheca;
-import Model.Bacheca_Titolo;
+import model.Bacheca;
+import model.Bacheca_Titolo;
 import java.util.List;
 
 /**
@@ -31,4 +31,5 @@ public interface BachecaDAOInterface {
     boolean modificaDescrizioneBacheca(int bachecaID, String nuovaDescrizione);
 
     String getDescrizioneBacheca(int bachecaID);
+
 }
