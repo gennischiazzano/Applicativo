@@ -1,19 +1,19 @@
 package controller;
 
-import DAO.BachecaDAOInterface;
-import DAO.ToDoDAOInterface;
-import DAO.LoginDAOInterface;
-import DAO.RegisterDAOInterface;
+import dao.BachecaDAOInterface;
+import dao.ToDoDAOInterface;
+import dao.LoginDAOInterface;
+import dao.RegisterDAOInterface;
 
 import implementazionePostgresDAO.BachecaPostgresDAO;
 import implementazionePostgresDAO.ToDoPostgresDAO;
 import implementazionePostgresDAO.LoginPostgresDAO;
 import implementazionePostgresDAO.RegisterPostgresDAO;
 
-import Model.Bacheca_Titolo;
-import Model.Bacheca;
-import Model.ToDo;
-import Model.Utente;
+import model.Bacheca_Titolo;
+import model.Bacheca;
+import model.ToDo;
+import model.Utente;
 
 import java.util.List;
 
