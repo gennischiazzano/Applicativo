@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,3 +72,4 @@ public class ToDo {
     public List<Operazione> getOperazioniSuToDo() { return OperazioneSuToDo; }
     public void setOperazioniSuToDo(List<Operazione> OperazioneSuToDo) { this.OperazioneSuToDo = OperazioneSuToDo; }
 }
+
