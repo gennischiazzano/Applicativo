@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import Model.Bacheca_Titolo;
 import javax.swing.*;
@@ -74,3 +74,4 @@ public class FinestraCreaBacheca extends JFrame {
         setVisible(true);
     }
 }
+
