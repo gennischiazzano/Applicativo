@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /** Classe base per le operazioni su un ToDo (Create, Modificate, Eliminate). */
 public class Operazione {
@@ -22,3 +22,4 @@ public class Operazione {
         this.Stato_Op = Stato_Op;
     }
 }
+
