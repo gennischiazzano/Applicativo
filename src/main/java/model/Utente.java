@@ -1,20 +1,22 @@
 package Model;
 
+/** Classe che rappresenta un utente dell’applicazione. */
 public class Utente {
-    //Attributi
 
-    private String username ;
-    private String password ;
+    private String username;
+    private String password;
 
-    //Costruttore
+    /**
+     * Costruttore Utente.
+     * @param username nome utente
+     * @param password password
+     */
     public Utente(String username, String password){
         this.username = username;
         this.password = password;
     }
-    public String getUsername() {
-        return username;
-    }
-    public String getPassword() {
-        return password;
-    }
+
+    // --- Getters ---
+    public String getUsername() { return username; }
+    public String getPassword() { return password; }
 }
