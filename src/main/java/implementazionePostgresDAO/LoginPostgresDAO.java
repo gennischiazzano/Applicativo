@@ -1,7 +1,7 @@
 package implementazionePostgresDAO;
 
-import DAO.LoginDAOInterface;
-import Model.Utente;
+import dao.LoginDAOInterface;
+import model.Utente;
 import database.DatabaseManager;
 
 import java.sql.Connection;
@@ -33,4 +33,5 @@ public class LoginPostgresDAO implements LoginDAOInterface {
             return null;
         }
     }
+
 }
