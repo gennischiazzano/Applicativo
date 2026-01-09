@@ -3,8 +3,17 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Finestra del profilo utente.
+ * Mostra username e password e permette di effettuare logout o chiudere l'app.
+ */
 public class FinestraProfilo extends JFrame {
 
+    /**
+     * Costruttore che inizializza la finestra del profilo.
+     * @param username nome utente
+     * @param password password dell'utente
+     */
     public FinestraProfilo(String username, String password) {
         setTitle("Profilo Utente");
         setSize(400, 200);
@@ -13,20 +22,17 @@ public class FinestraProfilo extends JFrame {
         setResizable(false);
         setLayout(new BorderLayout());
 
-        // Titolo
         JLabel titolo = new JLabel("Il tuo profilo");
         titolo.setFont(new Font("Arial", Font.BOLD, 20));
         titolo.setHorizontalAlignment(SwingConstants.CENTER);
         add(titolo, BorderLayout.NORTH);
 
-        // Pannello con i dati
         JPanel infoPanel = new JPanel(new GridLayout(2, 2, 10, 10));
         infoPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
         infoPanel.setBackground(Color.white);
 
         JLabel userLabel = new JLabel("Username:");
         JLabel userValue = new JLabel(username);
-
         JLabel passLabel = new JLabel("Password:");
         JLabel passValue = new JLabel(password);
 
@@ -36,6 +42,22 @@ public class FinestraProfilo extends JFrame {
         infoPanel.add(passValue);
 
         add(infoPanel, BorderLayout.CENTER);
+
+        JButton logout = new JButton("Logout");
+        JButton exit = new JButton ("Exit");
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        bottomPanel.add(logout);
+        bottomPanel.add(exit);
+        add(bottomPanel, BorderLayout.SOUTH);
+
+        logout.addActionListener(actionEvent -> {
+            for(Frame frame : Frame.getFrames()){
+                frame.dispose();
+            }
+            new FinestraLogin();
+        });
+
+        exit.addActionListener(actionEvent -> System.exit(0));
 
         setVisible(true);
     }
