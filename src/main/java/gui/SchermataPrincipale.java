@@ -1,9 +1,9 @@
 package gui;
 
-import Model.Bacheca;
-import Model.Modificate;
-import Model.ToDo;
-import Model.Utente;
+import model.Bacheca;
+import model.Modificate;
+import model.ToDo;
+import model.Utente;
 import com.formdev.flatlaf.FlatLightLaf;
 import controller.Controller;
 
@@ -334,4 +334,5 @@ public class SchermataPrincipale extends JFrame {
     }
 
 }
+
 
