@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 /**
  * Interfaccia DAO per la registrazione degli utenti.
@@ -12,4 +12,5 @@ public interface RegisterDAOInterface {
      * @return true se registrazione avvenuta, false se username già esistente
      */
     boolean registraUtente(String username, String password);
+
 }
