@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import Model.ToDo;
 import Model.Stato_ToDo;
@@ -126,3 +126,4 @@ public class FinestraMostraAttivita extends JFrame {
         panel.repaint();
     }
 }
+
