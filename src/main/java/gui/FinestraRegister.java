@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.*;
@@ -105,3 +105,4 @@ public class FinestraRegister extends JFrame {
         setVisible(true);
     }
 }
+
