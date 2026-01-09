@@ -49,7 +49,7 @@ public class FinestraMostraCondivisi extends JFrame {
             for (ToDo todo : listaCondivisi) {
                 JCheckBox checkBox = new JCheckBox(
                         todo.getOrdine() + ". " + todo.getTitolo() + " [" + todo.getStato() + "]",
-                        todo.getStato() == Model.Stato_ToDo.Completato
+                        todo.getStato() == model.Stato_ToDo.Completato
                 );
                 checkBox.setToolTipText("Descrizione: " + todo.getDescrizione() + "\nScadenza: " + todo.getDataScadenza());
                 checkBox.setEnabled(false); // i ToDo condivisi non possono essere modificati
@@ -62,4 +62,5 @@ public class FinestraMostraCondivisi extends JFrame {
     }
 
 }
+
 
