@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import Model.ToDo;
 import controller.Controller;
@@ -127,4 +127,5 @@ public class FinestraModificaAttivita extends JFrame {
 
         setVisible(true);
     }
+
 }
