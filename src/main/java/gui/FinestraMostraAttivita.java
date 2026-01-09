@@ -1,8 +1,8 @@
 package gui;
 
-import Model.ToDo;
-import Model.Stato_ToDo;
-import Model.Eliminate;
+import model.ToDo;
+import model.Stato_ToDo;
+import model.Eliminate;
 import controller.Controller;
 
 import javax.swing.*;
@@ -126,4 +126,5 @@ public class FinestraMostraAttivita extends JFrame {
         panel.repaint();
     }
 }
+
 
