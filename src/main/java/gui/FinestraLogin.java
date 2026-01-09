@@ -1,89 +1,123 @@
 package GUI;
 
 import Model.Utente;
-
+import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+/**
+ * Finestra di login dell'applicazione ToDo.
+ * Permette all'utente di inserire username e password.
+ */
 public class FinestraLogin extends JFrame {
+
     private JTextField textField;
     private JPasswordField passwordField;
     private JButton loginButton;
-    private JButton registerButton;
-    private Utente utente;
+    private JCheckBox rememberMe;
 
     public FinestraLogin() {
+        FlatLightLaf.setup(); // Look moderno
 
         setTitle("Login");
-        setSize(400, 250);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(450, 550);
         setLocationRelativeTo(null);
-        setResizable(false); // Impedisce il ridimensionamento
-        setLayout(new BorderLayout());
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
 
-        // Pannello centrale con i campi login
-        JPanel centerPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        centerPanel.setBackground(Color.white);
+        ImageIcon icon = new ImageIcon("img/flat-lay-notebook-with-list-desk.jpg");
+        JLabel colorpane = new JLabel(icon);
+        colorpane.setLayout(new BorderLayout());
+        setContentPane(colorpane);
 
-        JLabel userLabel = new JLabel("Username:");
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        centerPanel.add(userLabel, gbc);
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(null);
+        mainPanel.setOpaque(false);
 
-        textField = new JTextField(15);
-        gbc.gridx = 1;
-        centerPanel.add(textField, gbc);
+        // Icona utente
+        JLabel iconLabel = new JLabel(new ImageIcon("img/user_icon.png"));
+        iconLabel.setBounds(175, 30, 100, 100);
+        mainPanel.add(iconLabel);
 
-        JLabel passLabel = new JLabel("Password:");
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        centerPanel.add(passLabel, gbc);
+        // Titolo
+        JLabel title = new JLabel("ToDo");
+        title.setForeground(Color.white);
+        title.setFont(new Font("Georgia", Font.BOLD, 44));
+        title.setBounds(160, 100, 200, 50);
+        mainPanel.add(title);
 
-        passwordField = new JPasswordField(15);
-        gbc.gridx = 1;
-        centerPanel.add(passwordField, gbc);
+        // Campo username
+        JLabel emailLabel = new JLabel("Username ID");
+        emailLabel.setForeground(Color.white);
+        emailLabel.setBounds(70, 190, 300, 20);
+        mainPanel.add(emailLabel);
 
-        JLabel titolo = new JLabel("Welcome in ToDo!");
-        titolo.setFont(new Font("Arial", Font.BOLD, 20));
-        titolo.setHorizontalAlignment(SwingConstants.CENTER);
-        titolo.setBackground(Color.white);
+        textField = new JTextField();
+        textField.setBounds(70, 210, 300, 30);
+        mainPanel.add(textField);
 
-        add(titolo, BorderLayout.NORTH);
-        add(centerPanel, BorderLayout.CENTER);
+        // Campo password
+        JLabel passLabel = new JLabel("Password");
+        passLabel.setForeground(Color.white);
+        passLabel.setBounds(70, 260, 300, 20);
+        mainPanel.add(passLabel);
 
-        // Footer con Login e Register uno accanto all'altro
-        loginButton = new JButton("Login");
-        registerButton = new JButton("Register");
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10)); // spazio tra i bottoni
-        bottomPanel.add(loginButton);
-        bottomPanel.add(registerButton);
-        add(bottomPanel, BorderLayout.SOUTH);
+        passwordField = new JPasswordField();
+        passwordField.setBounds(70, 280, 300, 30);
+        mainPanel.add(passwordField);
 
-        // Azione login
-        loginButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String username = textField.getText();
-                String password = new String(passwordField.getPassword());
-                Utente utente = new Utente(username, password);
-                if(utente.getUsername().equals(username) && utente.getUsername().equals(password)){
-                    JOptionPane.showMessageDialog(FinestraLogin.this, "Login effettuato con successo");
-                    dispose();
-                    new SchermataPrincipale(utente);
-                } else {
-                    JOptionPane.showMessageDialog(FinestraLogin.this, "Credenziali errate", "Errore", JOptionPane.ERROR_MESSAGE);
-                    textField.setText("");
-                    passwordField.setText("");
-                }
+        // Checkbox remember me
+        rememberMe = new JCheckBox("Remember me");
+        rememberMe.setForeground(Color.white);
+        rememberMe.setOpaque(false);
+        rememberMe.setBounds(70, 320, 150, 20);
+        mainPanel.add(rememberMe);
+
+        // Forgot password label
+        JLabel forgotLabel = new JLabel("<HTML><U>Forgot Password?</U></HTML>");
+        forgotLabel.setForeground(Color.white);
+        forgotLabel.setBounds(250, 320, 150, 20);
+        forgotLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        mainPanel.add(forgotLabel);
+
+        // Pulsante Login
+        loginButton = new JButton("LOGIN");
+        loginButton.setBounds(70, 370, 300, 40);
+        loginButton.setBackground(Color.white);
+        loginButton.setForeground(new Color(0x005FAD));
+        loginButton.setFont(new Font("SansSerif", Font.BOLD, 14));
+        mainPanel.add(loginButton);
+
+        // Pulsante Register
+        JButton registerButton = new JButton("REGISTER");
+        registerButton.setBounds(70, 420, 300, 40);
+        registerButton.setBackground(Color.LIGHT_GRAY);
+        registerButton.setForeground(Color.DARK_GRAY);
+        mainPanel.add(registerButton);
+
+        add(mainPanel);
+
+        // Azione Login
+        loginButton.addActionListener(e -> {
+            String username = textField.getText();
+            String password = new String(passwordField.getPassword());
+
+            Utente utente = controller.Controller.login(username, password);
+            if (utente != null) {
+                JOptionPane.showMessageDialog(this, "Login effettuato con successo!");
+                dispose();
+                new SchermataPrincipale(utente);
+            } else {
+                JOptionPane.showMessageDialog(this, "Credenziali errate", "Errore", JOptionPane.ERROR_MESSAGE);
+                textField.setText("");
+                passwordField.setText("");
             }
         });
-        registerButton.addActionListener(e->{
+
+        // Azione Register
+        registerButton.addActionListener(e -> {
             new FinestraRegister();
-            FinestraLogin.this.dispose();
+            dispose();
         });
 
         setVisible(true);
