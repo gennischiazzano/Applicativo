@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /** Enum per i possibili titoli delle bacheche. */
 public enum Bacheca_Titolo {
@@ -6,3 +6,4 @@ public enum Bacheca_Titolo {
     Università,
     Tempo_Libero
 }
+
