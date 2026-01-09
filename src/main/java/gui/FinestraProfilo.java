@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,3 +62,4 @@ public class FinestraProfilo extends JFrame {
         setVisible(true);
     }
 }
+
