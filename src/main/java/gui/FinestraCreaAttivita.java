@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import Model.ToDo;
 import Model.Stato_ToDo;
@@ -141,3 +141,4 @@ public class FinestraCreaAttivita extends JFrame {
         setVisible(true);
     }
 }
+
