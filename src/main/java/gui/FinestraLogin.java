@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import Model.Utente;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -123,3 +123,4 @@ public class FinestraLogin extends JFrame {
         setVisible(true);
     }
 }
+
