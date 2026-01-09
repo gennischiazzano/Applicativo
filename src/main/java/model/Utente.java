@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /** Classe che rappresenta un utente dell’applicazione. */
 public class Utente {
