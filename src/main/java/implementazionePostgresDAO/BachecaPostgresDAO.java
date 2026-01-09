@@ -1,8 +1,8 @@
 package implementazionePostgresDAO;
 
-import DAO.BachecaDAOInterface;
-import Model.Bacheca;
-import Model.Bacheca_Titolo;
+import dao.BachecaDAOInterface;
+import model.Bacheca;
+import model.Bacheca_Titolo;
 import database.DatabaseManager;
 
 import java.sql.*;
@@ -94,3 +94,4 @@ public class BachecaPostgresDAO implements BachecaDAOInterface {
         return ""; // ritorna stringa vuota se errore o nulla
     }
 }
+
