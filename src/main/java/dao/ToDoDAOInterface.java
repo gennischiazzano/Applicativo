@@ -1,6 +1,6 @@
-package DAO;
+package dao;
 
-import Model.ToDo;
+import model.ToDo;
 import java.util.List;
 
 /**
@@ -28,4 +28,5 @@ public interface ToDoDAOInterface {
 
     /** Recupera tutti i ToDo condivisi con un utente. */
     List<ToDo> getToDoCondivisi(String username);
+
 }
