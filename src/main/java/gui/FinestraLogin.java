@@ -25,7 +25,7 @@ public class FinestraLogin extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        ImageIcon icon = new ImageIcon("img/flat-lay-notebook-with-list-desk.jpg");
+        ImageIcon icon = new ImageIcon("src/main/resources/flat-lay-notebook-with-list-desk.jpg");
         JLabel colorpane = new JLabel(icon);
         colorpane.setLayout(new BorderLayout());
         setContentPane(colorpane);
@@ -123,5 +123,6 @@ public class FinestraLogin extends JFrame {
         setVisible(true);
     }
 }
+
 
 
