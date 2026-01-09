@@ -1,7 +1,8 @@
 package Model;
 
-public class Eliminate extends Operazione{
-    public Eliminate(boolean Stato_Op){
+/** Rappresenta un’operazione di eliminazione di un ToDo. */
+public class Eliminate extends Operazione {
+    public Eliminate(boolean Stato_Op) {
         super(Stato_Op);
     }
 }
