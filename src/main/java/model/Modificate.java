@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /** Rappresenta un’operazione di modifica di un ToDo. */
 public class Modificate extends Operazione {
@@ -6,3 +6,4 @@ public class Modificate extends Operazione {
         super(Stato_Op);
     }
 }
+
