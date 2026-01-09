@@ -1,27 +1,22 @@
 package GUI;
 
+import Model.Bacheca_Titolo;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
-import Model.Bacheca_Titolo;
-import Model.ToDo;
-
+/**
+ * Finestra per creare una nuova bacheca.
+ * Permette all'utente di selezionare il titolo e inserire la descrizione.
+ */
 public class FinestraCreaBacheca extends JFrame {
 
     private JComboBox<Bacheca_Titolo> titoloComboBox;
     private JTextArea descrizioneArea;
     private JButton confermaButton;
-    private List<ToDo> lista = new ArrayList<>();
-
-    // Aggiunto riferimento alla schermata principale
     private SchermataPrincipale schermataPrincipale;
 
     public FinestraCreaBacheca(SchermataPrincipale schermataPrincipale) {
-        this.schermataPrincipale = schermataPrincipale; // Salvo il riferimento
+        this.schermataPrincipale = schermataPrincipale;
 
         setTitle("Crea nuova bacheca");
         setSize(400, 300);
@@ -30,7 +25,7 @@ public class FinestraCreaBacheca extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
-        // Titolo della bacheca
+        // Titolo bacheca
         JPanel topPanel = new JPanel(new FlowLayout());
         topPanel.add(new JLabel("Titolo bacheca:"));
         titoloComboBox = new JComboBox<>(Bacheca_Titolo.values());
@@ -44,34 +39,35 @@ public class FinestraCreaBacheca extends JFrame {
         descrizioneArea = new JTextArea(5, 30);
         descrizioneArea.setLineWrap(true);
         descrizioneArea.setWrapStyleWord(true);
-        JScrollPane scrollPane = new JScrollPane(descrizioneArea);
-        centerPanel.add(scrollPane, BorderLayout.CENTER);
+        centerPanel.add(new JScrollPane(descrizioneArea), BorderLayout.CENTER);
         add(centerPanel, BorderLayout.CENTER);
 
-        // Pulsante
+        // Pulsante conferma
         confermaButton = new JButton("Conferma");
         add(confermaButton, BorderLayout.SOUTH);
 
-        // Azione
-        confermaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Bacheca_Titolo titolo = (Bacheca_Titolo) titoloComboBox.getSelectedItem();
-                String descrizione = descrizioneArea.getText();
+        confermaButton.addActionListener(e -> {
+            Bacheca_Titolo titolo = (Bacheca_Titolo) titoloComboBox.getSelectedItem();
+            String descrizione = descrizioneArea.getText().trim();
 
-                if (descrizione.isBlank()) {
-                    JOptionPane.showMessageDialog(FinestraCreaBacheca.this, "Inserisci una descrizione!", "Errore", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
+            if (descrizione.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Inserisci una descrizione!", "Errore", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-                // Aggiungo la bacheca alla schermata principale
-                schermataPrincipale.aggiungiBacheca(titolo.name());
+            String utenteUsername = schermataPrincipale.getUtenteUsername();
+            boolean successo = controller.Controller.creaBacheca(titolo, descrizione, utenteUsername);
 
-                JOptionPane.showMessageDialog(FinestraCreaBacheca.this,
+            if (successo) {
+                JOptionPane.showMessageDialog(this,
                         "Bacheca creata:\nTitolo: " + titolo + "\nDescrizione: " + descrizione,
                         "Successo", JOptionPane.INFORMATION_MESSAGE);
-
-                dispose(); // Chiudo finestra
+                schermataPrincipale.caricaBacheche();
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Non è stato possibile creare la bacheca.\nHai già raggiunto il massimo (3) o una bacheca con questo titolo esiste.",
+                        "Errore", JOptionPane.ERROR_MESSAGE);
             }
         });
 
